@@ -1,8 +1,8 @@
 name: Update Asana Revenue
 
 on:
+  workflow_dispatch:        # enables “Run workflow” button
   schedule:
-    # Run at minute 0 of hour 0 and 12 UTC (i.e. 05:30 & 17:30 IST)
     - cron: '0 */12 * * *'
 
 jobs:
