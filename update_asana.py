@@ -1,5 +1,3 @@
-i have a python script which i want to automate to be run every 12 hours automatically. I want to achieve this free of charge , the python script is as follows:  import requests
-
 # -------------------- Configuration --------------------
 import os
 ASANA_PAT               = os.environ['ASANA_PAT']
