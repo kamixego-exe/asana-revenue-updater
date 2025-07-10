@@ -101,4 +101,4 @@ def main():
         print(f"[{project_name}] Updated: {', '.join(updated_fields)}")
 
 if __name__ == '__main__':
-    main() ; can you help me to do the same
+    main() 
