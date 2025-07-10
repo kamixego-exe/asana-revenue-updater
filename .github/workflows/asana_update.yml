@@ -1,0 +1,30 @@
+name: Update Asana Revenue
+
+on:
+  schedule:
+    # Run at minute 0 of hour 0 and 12 UTC (i.e. 05:30 & 17:30 IST)
+    - cron: '0 */12 * * *'
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python 3.x
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run update script
+        env:
+          ASANA_PAT:               ${{ secrets.ASANA_PAT }}
+          PORTFOLIO_GID:           ${{ secrets.PORTFOLIO_GID }}
+          SHOP_URL_FIELD_GID:      ${{ secrets.SHOP_URL_FIELD_GID }}
+          JOURNEY_REV_FIELD_GID:   ${{ secrets.JOURNEY_REV_FIELD_GID }}
+          BROADCAST_REV_FIELD_GID: ${{ secrets.BROADCAST_REV_FIELD_GID }}
+          ANALYTICS_API:           https://43r09s4nl9.execute-api.us-east-1.amazonaws.com/internal/shop/analytics/attribution
+        run: python update_asana.py
